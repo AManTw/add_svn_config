@@ -4,6 +4,9 @@
 do_main(){
 
 	cp /usr/share/code/resources/app/product.json /tmp/product.json
+
+	[ -n "`grep johnstoncode.svn-scm  /tmp/product.json`" ] && exit 0 
+
 	STR=`grep extensionAllowedProposedApi /tmp/product.json`
 	line=`grep -n extensionAllowedProposedApi /tmp/product.json| awk -F':' '{print $1}' `
 	count=`echo $STR |wc -c `
